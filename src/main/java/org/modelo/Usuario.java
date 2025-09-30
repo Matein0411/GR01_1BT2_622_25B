@@ -1,8 +1,12 @@
 package org.modelo;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 
 public class Usuario {
 
@@ -11,14 +15,16 @@ public class Usuario {
 
     private Long id;
     private String nombre;
-    private String email;
+    private String correo;
+    private String telefono;
 
     // Constructor
     public Usuario() {}
 
-    public Usuario(String nombre, String email) {
+    public Usuario(String nombre, String correo, String telefono) {
         this.nombre = nombre;
-        this.email = email;
+        this.correo = correo;
+        this.telefono = telefono;
     }
 
     public Long getId() {
@@ -33,10 +39,16 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public String getEmail() {
-        return email;
+    public String getCorreo() {
+        return correo;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    public String getTelefono() {
+        return telefono;
+    }
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }
