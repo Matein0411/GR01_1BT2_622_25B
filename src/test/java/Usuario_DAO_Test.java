@@ -1,4 +1,3 @@
-package test.java;
 
 import org.junit.jupiter.api.*;
 import org.modelo.Usuario;

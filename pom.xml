@@ -17,7 +17,7 @@
     <dependencies>
         <!-- Hibernate core -->
         <dependency>
-            <groupId>org.hibernate.orm</groupId>
+            <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>6.2.7.Final</version>
         </dependency>
@@ -44,13 +44,19 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- H2 Database para tests -->
+        <!-- Pool de conexiones C3P0 para mejor rendimiento en la nube -->
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>2.2.224</version>
-            <scope>test</scope>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>6.2.7.Final</version>
         </dependency>
+
+                <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.7.3</version>
+        </dependency>
+
 
     </dependencies>
 </project>

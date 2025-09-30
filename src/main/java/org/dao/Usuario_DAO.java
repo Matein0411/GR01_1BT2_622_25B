@@ -12,7 +12,7 @@ public class Usuario_DAO {
     public void guardar(Usuario usuario){
         Session session = factory.openSession();
         session.beginTransaction();
-        session.persist(usuario);  // persist() reemplaza a save() que está deprecado
+        session.save(usuario);
         session.getTransaction().commit();
         session.close();
     }

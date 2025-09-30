@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Conexión PostgreSQL en la Nube -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <!-- Ejemplo de URL para AWS RDS -->
+        <property name="hibernate.connection.url">jdbc:postgresql://tu-instancia.xxxxx.us-east-1.rds.amazonaws.com:5432/webappdb</property>
+        <!-- O para otras nubes, cambia el host según corresponda -->
+        <property name="hibernate.connection.username">tu_usuario_nube</property>
+        <property name="hibernate.connection.password">tu_password_nube</property>
+
+        <!-- Configuración SSL (recomendado para conexiones en la nube) -->
+        <property name="hibernate.connection.url">jdbc:postgresql://host:port/database?ssl=true&amp;sslmode=require</property>
+
+        <!-- Dialecto PostgreSQL -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+        <!-- Pool de conexiones (importante para la nube) -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.timeout">300</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+
+        <!-- Mostrar SQL (desactivar en producción) -->
+        <property name="hibernate.show_sql">false</property>
+
+        <!-- Validar esquema en lugar de actualizar automáticamente -->
+        <property name="hibernate.hbm2ddl.auto">validate</property>
+
+        <!-- Entidades -->
+        <mapping class="org.modelo.Usuario"/>
+    </session-factory>
+</hibernate-configuration>
