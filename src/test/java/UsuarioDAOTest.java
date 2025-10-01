@@ -1,4 +1,4 @@
-package test.java;
+//package test.java;
 
 import org.junit.jupiter.api.*;
 import org.modelo.Usuario;
@@ -29,7 +29,7 @@ class UsuarioDAOTest {
         usuarioDAO.guardar(usuario);
 
         // Listar usuarios y verificar que el usuario guardado esté presente
-        List<Usuario> usuarios = usuarioDAO.listar();
+        List<Usuario> usuarios = usuarioDAO.findEntities();
         assertNotNull(usuarios);
         assertFalse(usuarios.isEmpty());
         assertTrue(usuarios.stream().anyMatch(u -> u.getNombre().equals("Juan") && u.getCorreo().equals("juan@example.com")));

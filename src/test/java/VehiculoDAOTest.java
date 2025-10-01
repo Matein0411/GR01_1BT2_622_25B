@@ -30,16 +30,16 @@ public class VehiculoDAOTest {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         vehiculo.setUsuario(usuarioDAO.buscarPorId((long) 1));
 
-        vehiculo.setPlaca("ABC123");
-        vehiculo.setMarca("Toyota");
-        vehiculo.setModelo("Corolla");
-        vehiculo.setAnio(2020);
+        vehiculo.setPlaca("EFG456");
+        vehiculo.setMarca("Chevrolet");
+        vehiculo.setModelo("Onix");
+        vehiculo.setAnio(2025);
 
         // Guardar el vehículo
         vehiculoDAO.guardar(vehiculo);
 
         // Listar vehículos y verificar que el vehículo guardado esté presente
-        List<Vehiculo> vehiculos = vehiculoDAO.listar();
+        List<Vehiculo> vehiculos = vehiculoDAO.findEntities();
         assertNotNull(vehiculos);
         assertFalse(vehiculos.isEmpty());
         assertTrue(vehiculos.stream().anyMatch(v -> v.getPlaca().equals("ABC123") && v.getUsuario().getId().equals(usuarioDAO.buscarPorId((long) 1).getId())));
