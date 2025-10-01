@@ -46,12 +46,6 @@ public abstract class BaseDAO<T> {
         executeInTransaction(session -> session.persist(entity));
     }
 
-    public List<T> listar() {
-        return executeQuery(session ->
-                session.createQuery("FROM " + entityClass.getSimpleName(), entityClass).list()
-        );
-    }
-
     public void borrar(Long id) {
         executeInTransaction(session -> {
             T entity = session.get(entityClass, id);
@@ -78,8 +72,8 @@ public abstract class BaseDAO<T> {
     /**
      * Buscar todas las entidades sin límite
      */
-    public List<T> findEntities() {
-        return findEntities(true, -1, -1);
+    public List<T> listar() {
+        return listar(true, -1, -1);
     }
     
     /**
@@ -87,8 +81,8 @@ public abstract class BaseDAO<T> {
      * @param maxResults Número máximo de resultados
      * @param firstResult Índice del primer resultado (0-based)
      */
-    public List<T> findEntities(int maxResults, int firstResult) {
-        return findEntities(false, maxResults, firstResult);
+    public List<T> listar(int maxResults, int firstResult) {
+        return listar(false, maxResults, firstResult);
     }
     
     /**
@@ -97,7 +91,7 @@ public abstract class BaseDAO<T> {
      * @param maxResults Límite de resultados
      * @param firstResult Offset (desde qué registro)
      */
-    public List<T> findEntities(boolean all, int maxResults, int firstResult) {
+    private List<T> listar(boolean all, int maxResults, int firstResult) {
         return executeQuery(session -> {
             // Crear CriteriaBuilder y CriteriaQuery
             CriteriaBuilder cb = session.getCriteriaBuilder();
