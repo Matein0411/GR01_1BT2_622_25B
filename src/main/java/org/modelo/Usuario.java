@@ -1,5 +1,6 @@
 package org.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,10 +13,15 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+
+    @Column(length = 100, nullable = false)
     private String nombre;
+
+    @Column(length = 100, nullable = false)
     private String correo;
+
+    @Column(length = 15, nullable = false)
     private String telefono;
 
     // Constructor
@@ -26,7 +32,8 @@ public class Usuario {
         this.correo = correo;
         this.telefono = telefono;
     }
-
+    
+    // Getters y Setters
     public Long getId() {
         return id;
     }
